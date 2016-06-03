@@ -1,4 +1,4 @@
-package com.ingweb.sample;
+package me.dakbutfly.sample;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

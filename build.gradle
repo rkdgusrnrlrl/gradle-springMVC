@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp' //이클립스 웹프로젝트용
+apply plugin: 'idea'        //intelliJ
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -18,10 +19,10 @@ def version = [
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 task cleanAll << {
-    delete ".settings"
+    delete ".settings", ".idea", "${project.name}.iml", "${project.name}.iws"
 }
 
-cleanAll.dependsOn cleanEclipse, clean
+cleanAll.dependsOn cleanEclipse, cleanIdea, clean
 
 eclipse {
     project.natures "org.springsource.ide.eclipse.gradle.core.nature"
