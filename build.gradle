@@ -1,0 +1,55 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp' //이클립스 웹프로젝트용
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+version = '1.0'
+
+project.webAppDirName = 'WebContent'
+
+// 귀찮은 버전관리를 편하게 하기 위해서
+def version = [
+  spring: '4.0.0.RELEASE',
+  servletAPI: '2.5',
+  commons_lang3: '3.3.2'
+]
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+task cleanAll << {
+    delete ".settings"
+}
+
+cleanAll.dependsOn cleanEclipse, clean
+
+eclipse {
+    project.natures "org.springsource.ide.eclipse.gradle.core.nature"
+    //컴파일후 저장되는 디렉토리 설정
+    classpath {
+    	defaultOutputDir = file("WebContent/WEB-INF/classes" )
+    }
+    
+    wtp {
+        facet {
+            facet name: 'jst.web', version: '2.5' 	//서블릿 버전
+            facet name: 'jst.java', version: '1.7'	//java 버전
+        }
+    }
+}
+
+repositories {
+	//flatDir { dirs "WebContent/WEB-INF/lib" } 오라클 jdbc jar 파일로 추가시
+	mavenCentral()
+}
+ 
+dependencies {
+//서블릿
+   providedCompile "javax.servlet:servlet-api:${version.servletAPI}"
+   
+   //스프링
+   compile "org.springframework:spring-webmvc:${version.spring}"
+   //lang3
+   compile "org.apache.commons:commons-lang3:${version.commons_lang3}"
+   //compile name : 'ojdbc6'  오라클 jdbc jar 파일로 추가시      
+}

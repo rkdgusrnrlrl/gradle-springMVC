@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource name="nktech3"
+			  auth="Container"
+			  type="javax.sql.DataSource"
+			  username="nktech"
+			  password="nkt+2015+"
+			  driverClassName="core.log.jdbc.driver.OracleDriver"
+			  url="jdbc:oracle:thin:@203.250.196.44:1521:KISTI1"
+			  maxActive="20"
+			  maxIdle="10"
+			  maxWait="-1"
+	/> 
+
+<!-- 	
+	<Resource name="nktech3"
+			  auth="Container"
+			  type="javax.sql.DataSource"
+			  username="nktech15"
+			  password="nkt+2015+"
+			  driverClassName="oracle.jdbc.OracleDriver"
+			  url="jdbc:oracle:thin:@b3d.kisti.re.kr:1251:KIS031"
+			  maxActive="20"
+			  maxIdle="10"
+			  maxWait="-1"
+	/>
+	-->
+</Context>
