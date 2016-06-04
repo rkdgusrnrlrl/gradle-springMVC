@@ -32,11 +32,26 @@
 - 오라클 jdbc 드라이버(jar)를 설치하려면, 주석으로 되어있는 부분을 풀어 주고 `WebContent/WEB-INF/lib`밑에 jar 파일을 넣으면 된다. `compile` 부분은 해당 jar 파일명을 기입해야 한다.
 
 ## 빌드 방법 ##
+
+### eclipse ###
 - cmd 창을 켜고, `gradle cleanAll eclipse` 라고 쳐 주면 알아서 빌드 된다.
 	- `cleanAll` : 기존에 빌드 되었던 파일을 다 초기화(삭제) 시킨다.
 	- `eclipse` : eclipse 프로젝트에 맞게 빌드한다. 
 - 이클립스를 켜고 해당 폴더를 import 시켜주면 정상 작동한다.
 
+### intelliJ ###
+- cmd 창을 켜고, `gradle cleanAll idea` 라고 쳐 주면 알아서 빌드 된다.
+	- `cleanAll` : 기존에 빌드 되었던 파일을 다 초기화(삭제) 시킨다.
+	- `idea` : intelliJ 프로젝트에 맞게 빌드한다. 
+- intelliJ 켜고 해당 폴더를 열어주면 끝
+
+## 개선 사항 ##
+- 테이블 연동을 통한 VO 자동 생성 및 task 를 통해 특정 테이블만 Vo로 만들거나 테이블 수정시 task 를 통해 자동으로 Vo 수정
+	- 해당 로직을 위해 [Lombok](https://projectlombok.org/)라이브러리 추가 할 예정
+- TDD를 위한 세팅 추가할 예정
+	- [Mockito](http://mockito.org/) 같은 테스트 라이브러리 추가
+	- Mock DB 도 필요 할듯 Spring 에서 지원해주는 테스트라이브러리 확인
+	- Spring Controller 테스트 예제 및 템플릿 추가
 
 
 
